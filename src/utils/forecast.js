@@ -11,7 +11,11 @@ request({url, json: true}, (error, {body}) => {
     else if (body.error) {    
         callback(body.error.info, undefined)    
     } else {
-        callback(undefined, body.current.weather_descriptions[0]+'. It is currently '+ body.current.temperature +' degrees out. It feels like '+ body.current.feelslike +' degrees out.')
+        if(body.current.temperature===body.current.feelslike){
+            callback(undefined, body.current.weather_descriptions[0]+'. It is currently '+ body.current.temperature +' degrees out. There is '+ body.current.precip+'% chance of rain.')
+        }else{
+            callback(undefined, body.current.weather_descriptions[0]+'. It is currently '+ body.current.temperature +' degrees out, due to wind it feels like '+ body.current.feelslike +' degrees out. There is '+ body.current.precip+'% chance of rain.')
+        }
     }      
   })    
 }

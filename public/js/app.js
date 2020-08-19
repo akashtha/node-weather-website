@@ -13,7 +13,7 @@ weatherForm.addEventListener('submit', (e)=>{
     e.preventDefault()
     
     const searchLocation = search.value
-    console.log('address='+searchLocation)
+    console.log('Address: '+searchLocation)
 
     messageOne.textContent = 'Loading..'
     messageTwo.textContent = ''
@@ -25,8 +25,9 @@ weatherForm.addEventListener('submit', (e)=>{
             messageOne.textContent = data.error
             
         }else{
-            console.log(data.location)
-            console.log(data.forecast)
+            console.log('Latitude: '+ data.latitude+', Longitude: '+ data.longitude)
+            console.log('Location: '+data.location)
+            console.log('Forecast: '+data.forecast)
             messageOne.textContent = data.location
             messageTwo.textContent = data.forecast
             
